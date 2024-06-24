@@ -8,4 +8,4 @@ if (process.env.NODE_ENV === "development") {
   weatherServer();
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.renderer(<App />, document.getElementById("root"));

@@ -17,7 +17,7 @@ const getWeatherData = (cityId, tempUnits) => {
         pressure: wd.main.pressure,
         humidity: wd.main.humidity,
         conditions: wd.weather[0].description.toUpperCase(),
-        icon: http://openweathermap.org/img/wn/${wd.weather[0].icon}@2x.png,
+        icon: `http://openweathermap.org/img/wn/${wd.weather[0].icon}@2x.png`,
         wind_speed: wd.wind.speed,
         wind_direction: wd.wind.deg
       }

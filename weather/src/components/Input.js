@@ -11,7 +11,7 @@ const Input = ({label, onInput, InputRef}) => {
   
 };
 
-Input.propsTypes = {
+Input.propTypes = {
     label: PropTypes.string.isRequired,
     onInput: PropTypes.func,
     inputRef: PropTypes.object

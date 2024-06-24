@@ -7,9 +7,6 @@ import WeatherReport from "./components/WeatherReport";
 
 class App extends Component {
     
-  
-  render () {
-
     state = {
         SearchResults: [],
         error: false,
@@ -19,24 +16,24 @@ class App extends Component {
         weatherData: {} 
       }
       
-      searchRef = useRef()
+      searchRef = useRef();
       
    componentDidMount() {
         this.searchRef.current.focus();
         this.getWeather();
-   };
-   componentDidUpdate(prevProps, prevState) {
+   }
+   componentDidUpdate(_, prevState) {
     if (
 
         prevState.selectedLocId !== this.state.selectedLocId ||
         prevState.tempUnits !== this.state.tempUnits
     ){
-        this.getWeather();
+        this.getWeather(this.state.selectedLocId);
    }
    }
 
   searchLocations = debounce(KeyWord => {
-    fetch "https://api.weatherserver.com/weather/cities/${KeyWord}"
+    fetch (`https://api.weatherserver.com/weather/cities/${KeyWord}`)
     .then(res => res.json())
     .then(({results}) => this.setState({SearchResults: results, error: false}))
     .catch(() => this.setState({error: true}))
@@ -49,7 +46,7 @@ class App extends Component {
     });
     this.searchRef.current.value = "";
 
-    fetch(https://api.weatherserver.com/weather/current/${this.state.selectedLocId}/${this.state.tempUnits})
+    fetch(`https://api.weatherserver.com/weather/current/${this.state.selectedLocId}/${this.state.tempUnits}`)
   .then(res => res.json())
   .then(results => this.setState({
     weatherData: results,
@@ -58,6 +55,7 @@ class App extends Component {
   .catch(() => this.setState({error: true}))
    
 }
+render(){
     return (
         <div className="weather-app">
         <h1>WeatheWatch</h1>
